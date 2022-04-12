@@ -1,20 +1,14 @@
-package com.FoodPostman;
-
-
-
+package com.student.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
 
 @Entity
-@Table(name="menu")
-
 public class Menu {
-        @Id
-        int id;
-        String item;
+
+	 @Id
+     int id;
+     public String item;
 		public Menu() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -27,7 +21,7 @@ public class Menu {
 			this.price = price;
 		}
 		String category;
-        double price;
+     public double price;
 		@Override
 		public String toString() {
 			return "Product "+" p_id=" + id + ", item=" + item + ", price=" + price;
