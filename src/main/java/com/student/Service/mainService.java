@@ -7,18 +7,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.student.Entity.Cart;
+
 import com.student.Entity.Menu;
-import com.student.Repo.CartRepo;
+
 import com.student.Repo.MenuRepo;
 
 @Service
 public class mainService {
 	@Autowired
 	MenuRepo menurepo;
-	@Autowired
-	CartRepo cartrepo;
-
+	
 	public Menu getItemById(int id) {
 		return menurepo.findById(id).get();
 	}
@@ -53,42 +51,5 @@ public class mainService {
 		
 	}
 
-	public List<Cart> getAllIt() {
-		List<Cart> citems = new ArrayList<Cart>();
-		cartrepo.findAll().forEach(itm -> citems.add(itm));
-		return citems;
-	}
 
-	public List<Cart> findAllIt(String name) {
-		double Tamt = 0;
-		List<Cart> names = new ArrayList<Cart>();
-		
-		
-		cartrepo.findByName(name).forEach(citm -> names.add(citm));
-		 Iterator<Cart> it = names.iterator();
-		while(it.hasNext()) {
-			
-			
-			double Amount=it.next().total;
-			Tamt+=Amount;
-			
-			
-		}
-		System.out.println(Tamt);
-		return names;
-	}
-
-	
-public Menu findCart(Cart cart) {		
-		Menu menu=new Menu();		
-		menu = menurepo.findByItem(cart.item);
-		cart.item=menu.item;
-		cart.price=menu.price;
-		cart.name=cart.getName();
-		cart.quantity=cart.getQuantity();
-		cart.total= cart.price * cart.quantity;
-		cartrepo.save(cart);
-		return menu;
-		
-	}
 }

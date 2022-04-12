@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.student.Entity.Cart;
+
 import com.student.Entity.Menu;
 import com.student.Service.mainService;
 
@@ -59,19 +59,5 @@ public class mainController {
 		menuService.save(menu);
 	}
 
-	@GetMapping("/cart")
-	public List<Cart> getAllIt() {
-		return menuService.getAllIt();
-	}
-
-	@GetMapping("/cart/{name}")
-	public List<Cart> findAll(@PathVariable("name") String name) {
-		return menuService.findAllIt(name);
-
-	}
-
-	@PostMapping("/cart")
-	public Menu addCart(@RequestBody Cart cart) {
-		return menuService.findCart(cart);
-	}
+	
 }
